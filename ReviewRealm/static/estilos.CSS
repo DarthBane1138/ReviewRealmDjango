@@ -1,0 +1,265 @@
+html, body {
+  height: 110%;
+  background-image: linear-gradient(to bottom, rgb(23, 43, 80), rgb(68, 103, 167));
+  margin: 0;
+  padding: 0;
+}
+
+/* Cambiar el color de fondo de la navbar */
+.bg-body-tertiary {
+  background-color: rgb(65, 65, 65) !important; /* Gris oscuro para el fondo */
+}
+
+/* Para el color de las letras de los elementos de la navbar */
+.navbar-nav .nav-link {
+  color: rgb(255, 255, 255); /* Blanco para las letras */
+}
+
+/* Para cambiar el color de las letras de los elementos del navbar */
+.navbar-nav .nav-link.active {
+  color: rgb(76, 169, 201); /* Azul claro para el elemento activo */
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link.disabled {
+  color: rgb(100, 100, 100); /* gris para los elementos incativos */
+}
+
+.contenedor-titulo {
+  background-color: rgb(100, 100, 100);
+  padding: 1px;
+}
+
+.navbar-brand img {
+  width: 250px; /* Ancho de la imagen */
+}
+
+.mi-columna-oscurecida {
+  background-color: rgba(0, 0, 0, 0.8); /* Aumenta la opacidad para oscurecer */
+}
+
+.content_box_wide:not(.recomendaciones) {
+  background-color: rgba(0, 0, 0, 0.356);
+  position: absolute;
+  top: 50%; /* Ajusta la posición vertical según necesites */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* Asegura que la caja de texto esté sobre las imágenes */
+  color: #000000; /* El color del texto */
+  text-align: center; /* Centra el texto dentro de la caja */
+  /* Agrega aquí más estilos si es necesario */
+  width: 50%; /* Porcentaje del ancho de la pantalla */
+  height: 50%; /* Porcentaje de la altura de la pantalla */
+  max-width: 1000px; /* Ancho máximo para dispositivos grandes */
+  max-height: 500px; /* Altura máxima para dispositivos grandes */
+  box-sizing: border-box; /* Asegura que padding y border estén incluidos en el ancho/altura */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.responsive_image {
+  max-width: 100%; /* Hace que la imagen sea tan ancha como su contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+
+.subtitulo_index {
+  color: green;
+  text-shadow: -1px -1px 1px rgb(0, 0, 0), 1px -1px 1px rgb(0, 0, 0), -1px 1px 1px rgb(0, 0, 0), 1px 1px 10px rgb(0, 0, 0);
+  font-weight: bolder;
+}
+
+.subtitulo_index_2 {
+  color: rgb(0, 88, 0);
+  text-shadow: -1px -1px 1px rgb(0, 0, 0), 1px -1px 1px rgb(0, 0, 0), -1px 1px 1px rgb(0, 0, 0), 1px 1px 10px rgb(0, 0, 0);
+  font-weight: bolder;
+}
+
+.subtitulo_index_3 {
+  color: rgb(0, 238, 255);
+  text-shadow: -2px -2px 2px rgb(0, 0, 0), 2px -2px 2px rgb(0, 0, 0), -2px 2px 2px rgb(0, 0, 0), 2px 2px 20px rgb(0, 0, 0);
+  font-weight: bolder;
+}
+
+.lista_pagina {
+  text-align: left;
+  color:  rgb(219, 219, 219);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  line-height: 2;
+}
+
+.table-transparent {
+  background-color: rgba(255, 255, 255, 0); /* Fondo completamente transparente */
+}
+
+.table-transparent th,
+.table-transparent td {
+  background-color: rgba(255, 255, 255, 0); /* Fondo completamente transparente */
+  color: white;
+}
+
+.content_box_wide.recomendaciones {
+  background-color: rgba(0, 0, 0, 0.356);
+  position: absolute;
+  top: 50%; /* Ajusta la posición vertical según necesites */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* Asegura que la caja de texto esté sobre las imágenes */
+  color: #000000; /* El color del texto */
+  text-align: center; /* Centra el texto dentro de la caja */
+  /* Agrega aquí más estilos si es necesario */
+  width: 50%; /* Porcentaje del ancho de la pantalla */
+  height: 1000px;
+  max-width: 1000px; /* Ancho máximo para dispositivos grandes */
+  max-height: 500px; /* Altura máxima para dispositivos grandes */
+  box-sizing: border-box; /* Asegura que padding y border estén incluidos en el ancho/altura */
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.caja-flexible {
+  height: 150px; /* Altura fija */
+  width: auto; /* Anchura adaptable */
+  max-width: 100%; /* Asegura que la caja no exceda el ancho del contenedor */
+  overflow: auto; /* Añade barras de desplazamiento si el contenido excede la altura */
+}
+
+.caja-fija {
+  height: 1080px; /* Altura fija */
+  width: 1920px; /* Anchura inicial fija */
+  /*max-width: 500px; /* Anchura máxima fija */
+}
+
+.form-label {
+  color:  rgb(219, 219, 219);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  line-height: 2;
+}
+
+.form-check-label {
+  color:  rgb(219, 219, 219);
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.fondo-inicio {
+  background-image: url('{% static "img/ghost_of_tsushima.jpg" %}');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed
+}
+
+#passwordHelpBlock {
+  color: rgb(187, 187, 187);
+}
+
+#cuerpo_categorias {
+  color: rgba(0, 185, 46);
+  background-color: transparent;
+}
+
+/* A partir de acá se actualizan estilos que se incorporar para la segunda entrega */
+
+/* Formato de Placeholders para registro */
+#itUserName::placeholder,
+#itContrasena::placeholder,
+#itConstrasenaConf::placeholder,
+#itEmail::placeholder {
+  color: rgb(161, 161, 161);
+  font-weight: lighter;
+}
+
+.errores {
+  background: rgba(255, 0, 0, 0.8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+  color: #fff;
+  display: none;
+  font-size: 14px;
+  padding: 4px;
+  position: absolute;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+#checkBoxGenero {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkbox-container .form-check {
+  width: 30%;
+}
+
+#no-estoy-registrado {
+    background-color: rgba(255, 255, 255, 0.5);
+    margin-left: 30px;
+}
+
+#modalMensaje .modal-content {
+  background-color: rgba(255, 255, 255, 0.5);
+  background-blend-mode: overlay;
+  background-size: cover; /* Para ajustar la imagen al tamaño del modal */
+  background-position: center; /* Para centrar la imagen */
+}
+
+#aclaraciones {
+  color: #9c9c9c;
+}
+
+#columna_principal {
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 860px;
+}
+
+
+/*Estilos para Footer*/
+footer {
+  background-color: rgb(65, 65, 65);
+  color: #fff;
+  padding: 15px 0;
+  border: 2px solid #6e6e6e;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  height: 170px;
+  margin: auto;
+}
+
+.footer-column {
+  flex: 1;
+  padding: 0 15px;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.social-media-icons img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+#p-footer {
+  color: #a1a1a1;
+  font-size: 14px; 
+  text-align: justify;
+}
+
+#linkIgn {
+  color: #797979;
+  justify-content: center;
+  padding-left: 100px;
+  padding-right: 100px;
+}
