@@ -5,6 +5,11 @@ $(document).ready(function(){
     $("#bEnviar").click(function(event){
       var correo = $("#itMail").val();
       var contrasena = $("#itContrasena").val();
+
+      // Prevenir la acción por defecto del botón de envío
+      event.preventDefault();
+      // Llamar a la función de validación y redirección
+      validarYRedireccionar();
   
       // Función para manejar la validación y la redirección
       function validarYRedireccionar() {
@@ -25,9 +30,9 @@ $(document).ready(function(){
             $("#mensajeModalBody").text("El formato de la contraseña no es válido");
             $('#modalMensaje').modal('show');
         }else{
+            $(".modal-content").css("background-image", "url('{% static 'img/VaultBoy.jpg' %}')")
             $("#botonCerrar").fadeOut();
             $("#registrarse").fadeOut();
-            $(".modal-content").css("background-image", "url('{% static 'img/VaultBoy.jpg' %}')")
             $("#exampleModalLabel").text("Iniciando Sesión");
             $("#mensajeModalBody").text("Todo está correcto. Enviando formulario...");
             $('#modalMensaje').modal('show');
@@ -38,11 +43,5 @@ $(document).ready(function(){
           }, 5000); // 2000 milisegundos = 2 segundos
         }
       }
-  
-      // Prevenir la acción por defecto del botón de envío
-      event.preventDefault();
-  
-      // Llamar a la función de validación y redirección
-      validarYRedireccionar();
     });
   });
