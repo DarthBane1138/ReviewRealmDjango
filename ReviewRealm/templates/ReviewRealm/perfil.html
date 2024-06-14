@@ -1,41 +1,8 @@
+{% extends 'ReviewRealm/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Perfil de usuario</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="{% static 'estilos.CSS' %}" />
-  </head>
-  <body>
-    
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="index">
-            <img src="{% static 'img/ReviewRealmlogoblanco.png' %}" alt="ReviewRealm">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link" href="index">Inicio</a>
-                <a class="nav-link" href="categorias">Categorías</a>
-                <a class="nav-link" href="recomendacion_aleatoria">Recomendación aleatoria</a>
-                <a class="nav-link" href="Ingresar_juego">Ingresar Juego</a>
-                </div>
-                <!--<div class="ms-auto navbar-nav">
-                  <div class="nav-item d-flex align-items-center">
-                    <span class="nav-link  active" aria-current="page" >Perfil</span>
-                    <img src="img/imagen_perfil.png" alt="Foto de perfil" width="30" class="rounded-circle">   
-                  </div>
-                </div>-->
-            </div>
-          </div>
-        </div>
-      </nav>
+{% block title %}PERFIL{% endblock %}
 
+{% block content %}
     <div class="contenedor-titulo">
         <h1 class ="text-center">Perfil de Usuario</h1>
     </div>
@@ -50,7 +17,7 @@
             <div class="row">
               <!-- div para imagen de usuario -->
                 <div class="col-md-3">
-                    <img src="{% static 'img/imagen_perfil.png' %}" alt="Foto de perfil" class="img-fluid rounded-circle">
+                    <img src="{% static 'ReviewRealm/img/imagen_perfil.png' %}" alt="Foto de perfil" class="img-fluid rounded-circle">
                 </div>
                 <!-- div para datos de usuario -->
                 <div class="col-md-9">
@@ -72,7 +39,7 @@
       <!-- div para primer juego -->
         <div class="col-md-4">
             <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
-                <img src="{% static 'img/super_smash.jpg'%}" class="card-img-top" alt="Juego 1">
+                <img src="{% static 'ReviewRealm/img/super_smash.jpg'%}" class="card-img-top" alt="Juego 1">
                 <div class="card-body">
                     <h5 class="card-title">Nombre del Juego 1</h5>
                     <p class="card-text">Descripción breve del juego.</p>
@@ -83,7 +50,7 @@
         <!-- div para segundo juego -->
         <div class="col-md-4">
             <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
-                <img src="{% static 'img/metal_gear_rising.jpeg'%}" class="card-img-top" alt="Juego 2">
+                <img src="{% static 'ReviewRealm/img/metal_gear_rising.jpeg'%}" class="card-img-top" alt="Juego 2">
                 <div class="card-body">
                     <h5 class="card-title">Nombre del Juego 2</h5>
                     <p class="card-text">Descripción breve del juego.</p>
@@ -94,7 +61,7 @@
         <!-- div para tercer juego -->
         <div class="col-md-4">
             <div class="p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">
-                <img src="{% static 'img/ghost_of_tsushima.jpg'%}" class="card-img-top" alt="Juego 3">
+                <img src="{% static 'ReviewRealm/img/ghost_of_tsushima.jpg'%}" class="card-img-top" alt="Juego 3">
                 <div class="card-body">
                     <h5 class="card-title">Nombre del Juego 3</h5>
                     <p class="card-text">Descripción breve del juego.</p>
@@ -108,14 +75,4 @@
     <div class = "col-2"></div>
   </div>
 </div>
-
-    <!-- Se agrega Footer-->
-    {% include 'ReviewRealm/footer.html' %}
-
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <script src="js/scripts.js"></script>
-
-  </body>
-</html>
+{% endblock %}

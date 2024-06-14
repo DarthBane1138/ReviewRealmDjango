@@ -1,7 +1,7 @@
 [
     {
       "titulo": "The Legend of Zelda: The Wind Waker",
-      "imagen": "img/the_wind_waker.jpg",
+      "imagen": "/static/ReviewRealm/img/the_wind_waker.jpg",
       "detalles": [
         "Desarrollador: Nintendo EAD",
         "Distribuidor: Nintendo",
@@ -20,7 +20,7 @@
     },
     {
       "titulo": "Super Mario Odyssey",
-      "imagen": "img/super_mario_odyssey.png",
+      "imagen": "/static/ReviewRealm/img/super_mario_odyssey.png",
       "detalles": [
         "Desarrollador: Nintendo EPD",
         "Distribuidor: Nintendo",
@@ -39,7 +39,7 @@
     },
     {
       "titulo": "The Witcher 3: Wild Hunt",
-      "imagen": "img/the_witcher_3.jpg",
+      "imagen": "/static/ReviewRealm/img/the_witcher_3.jpg",
       "detalles": [
         "Desarrollador: CD Projekt Red",
         "Distribuidor: CD Projekt",
@@ -58,7 +58,7 @@
     },
     {
         "titulo": "Elden Ring",
-        "imagen": "img/elden_ring.png",
+        "imagen": "/static/ReviewRealm/img/elden_ring.png",
         "detalles": [
           "Desarrollador: FromSoftware",
           "Distribuidor: Bandai Namco Entertainment",
@@ -77,7 +77,7 @@
       },
       {
         "titulo": "Starcraft",
-        "imagen": "img/starcraft.jpg",
+        "imagen": "/static/ReviewRealm/img/starcraft.jpg",
         "detalles": [
           "Desarrollador: Blizzard Entertainment",
           "Distribuidor: Blizzard Entertainment",
@@ -96,7 +96,7 @@
       },
       {
         "titulo": "Ghost of Tsushima",
-        "imagen": "img/ghost_of_tsushima_cover.jpg",
+        "imagen": "/static/ReviewRealm/img/ghost_of_tsushima_cover.jpg",
         "detalles": [
           "Desarrollador: Sucker Punch Productions",
           "Distribuidor: Sony Interactive Entertainment",
@@ -115,7 +115,7 @@
       },
       {
         "titulo": "Hellblade: Senua’s Sacrifice",
-        "imagen": "img/hellblade_senua_sacrifice.jpg",
+        "imagen": "/static/ReviewRealm/img/hellblade_senua_sacrifice.jpg",
         "detalles": [
           "Desarrollador: Ninja Theory",
           "Distribuidor: Ninja Theory",
@@ -134,7 +134,7 @@
       },
       {
         "titulo": "Dark Souls",
-        "imagen": "img/dark_souls.jpg",
+        "imagen": "/static/ReviewRealm/img/dark_souls.jpg",
         "detalles": [
           "Desarrollador: FromSoftware",
           "Distribuidor: Bandai Namco Entertainment",

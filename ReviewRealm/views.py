@@ -29,7 +29,3 @@ def recomendacion_aleatoria(request):
 def registrarse(request):
     context={}
     return render(request, 'ReviewRealm/registrarse.html', context)
-
-def footer(request):
-    context={}
-    return render(request, 'ReviewRealm/footer.html', context)
