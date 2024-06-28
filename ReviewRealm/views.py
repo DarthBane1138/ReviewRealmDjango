@@ -37,3 +37,9 @@ def lista_juegos(request):
     context={"juegos":juegos,
              'MEDIA_URL': settings.MEDIA_URL}
     return render(request, 'ReviewRealm/lista_juegos.html', context)
+
+def listadoSQL(request):
+    juegos= Juego.objects.raw('SELECT * FROM ReviewRealm_juego')
+    print(juegos)
+    context={"juegos":juegos}
+    return render(request, 'ReviewRealm/listadoSQL.html', context)

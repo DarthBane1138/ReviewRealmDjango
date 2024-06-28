@@ -14,4 +14,5 @@ urlpatterns = [
     path('recomendacion_aleatoria', views.recomendacion_aleatoria, name='recomendacion_aleatoria'),
     path('registrarse', views.registrarse, name='registrarse'),
     path('juegos', views.lista_juegos, name='juegos'),
+    path('listadoSQL', views.listadoSQL, name='listadoSQL'),
 ]

@@ -6,7 +6,7 @@
     <title>Juegos</title>
 </head>
 <body>
-    <h1>Acá se mostrarán lo juegos que hay registrados en la página</h1>
+    <h1>Acá se mostrarán lo juegos que hay registrados en la página mediante listado SQL</h1>
     {% for juego in juegos %}
         <div>
             <h2>{{juego.titulo}}</h2>
@@ -19,8 +19,8 @@
             <p>{{juego.plataforma}}</p>
             <p>{{juego.duracion}}</p>
             <p>{{juego.clasificacion}}</p>
-            <p>{{ MEDIA_URL }}{{juego.imagen_portada}}</p>
-            <img src="{{ MEDIA_URL }}{{juego.imagen_portada}}" alt="Imagen de {{juego.titulo}}">
+            <p>{{juego.imagen_portada}}</p>
+            <img src="/media/{{juego.imagen_portada}}" alt="Imagen de {{juego.titulo}}">
 
         </div>
     {% endfor %}
