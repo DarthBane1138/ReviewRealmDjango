@@ -1,8 +1,9 @@
 from django.contrib import admin
-from .models import Genero, Usuario, Jugador
+from .models import Genero_Juego, Juego
+
 
 # Register your models here.
-admin.site.register(Genero)
-admin.site.register(Usuario)
-admin.site.register(Jugador)
+admin.site.register(Genero_Juego)
+admin.site.register(Juego)
+
 

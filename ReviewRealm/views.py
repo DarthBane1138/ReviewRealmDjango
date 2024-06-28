@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Genero_Juego, Juego
 
 # Create your views here.
 
@@ -29,3 +30,8 @@ def recomendacion_aleatoria(request):
 def registrarse(request):
     context={}
     return render(request, 'ReviewRealm/registrarse.html', context)
+
+def lista_juegos(request):
+    juegos= Juego.objects.all()
+    context={"juegos":juegos}
+    return render(request, 'ReviewRealm/lista_juegos.html', context)

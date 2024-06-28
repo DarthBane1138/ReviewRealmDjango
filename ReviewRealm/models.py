@@ -1,33 +1,27 @@
 from django.db import models
-
-class Genero(models.Model):
-    id_genero = models.AutoField(db_column='idGenero', primary_key=True)
-    genero = models.CharField(max_length=20, blank=False, null=False)
-
-    def __str__(self):
-        return str(self.genero)
-
-class Usuario(models.Model):
-    rut                 = models.CharField(primary_key=True, max_length=10)
-    nombre              = models.CharField(max_length=20)
-    apellido_paterno    = models.CharField(max_length=20)
-    apellido_materno    = models.CharField(max_length=20)
-    fecha_nacimiento    = models.DateField(blank=False, null=False)
-    id_genero           = models.ForeignKey('Genero', on_delete=models.CASCADE, db_column='idGenero')
-    telefono            = models.CharField(max_length=45)
-    email               = models.EmailField(unique=True, max_length=100, blank=True, null=True)
-    direccion           = models.CharField(max_length=50, blank=True, null=True)
-    activo              = models.IntegerField()
+from django.core.validators import MinValueValidator, MaxValueValidator
+    
+class Genero_Juego(models.Model):
+    id_genero_juego = models.AutoField(db_column='idGeneroJuego', primary_key=True)
+    nombre_genero = models.CharField(max_length=100, blank=False, null=False)
 
     def __str__(self):
-        return f"{self.nombre} {self.apellido_paterno}"
+        return str(self.nombre_genero)
 
-class Jugador(models.Model):
-    nombre_usuario  = models.CharField(max_length=20)
-    contraseña      = models.CharField(max_length=20)
-    email           = models.CharField(max_length=20)
-    id_genero       = models.ForeignKey('Genero', on_delete=models.CASCADE, db_column='idGenero')
-    generos         = models.CharField(max_length=100, blank=True, null=True)  # Acá se van a almacenar los géneros
+class Juego(models.Model):
+    titulo = models.CharField(max_length=200)
+    descripcion = models.TextField(blank=True, null=True)
+    anio = models.IntegerField(validators=[MinValueValidator(1900), MaxValueValidator(9999)])
+    id_genero_juego = models.ForeignKey('Genero_Juego', on_delete=models.CASCADE, db_column='idGeneroJuego')
+    desarrollador = models.CharField(max_length=200)
+    publisher = models.CharField(max_length=200)
+    calificacion = models.DecimalField(max_digits=3, decimal_places=1, null=True, blank=True)
+    plataforma = models.CharField(max_length=100)
+    duracion = models.PositiveIntegerField(validators=[MaxValueValidator(99999)])
+    clasificacion = models.CharField(max_length=200)
+    imagen_portada = models.ImageField(upload_to='media/portadas/', blank=True, null=True)
+
+    # Tuve que hace una instalación en python para poder usar imágenes (python -m pip install Pillow)
 
     def __str__(self):
-        return str(self.nombre_usuario)
+        return self.titulo

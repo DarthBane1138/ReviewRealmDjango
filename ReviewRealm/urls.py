@@ -12,5 +12,6 @@ urlpatterns = [
     path('inicio_sesion', views.inicio_sesion, name='inicio_sesion'),
     path('perfil', views.perfil, name='perfil'),
     path('recomendacion_aleatoria', views.recomendacion_aleatoria, name='recomendacion_aleatoria'),
-    path('registrarse', views.registrarse, name='registrarse')
+    path('registrarse', views.registrarse, name='registrarse'),
+    path('juegos', views.lista_juegos, name='juegos'),
 ]
