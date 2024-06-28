@@ -19,7 +19,7 @@ class Juego(models.Model):
     plataforma = models.CharField(max_length=100)
     duracion = models.PositiveIntegerField(validators=[MaxValueValidator(99999)])
     clasificacion = models.CharField(max_length=200)
-    imagen_portada = models.ImageField(upload_to='media/portadas/', blank=True, null=True)
+    imagen_portada = models.ImageField(upload_to='portadas/', blank=True, null=True)
 
     # Tuve que hace una instalación en python para poder usar imágenes (python -m pip install Pillow)
 

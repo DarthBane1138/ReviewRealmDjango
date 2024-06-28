@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Genero_Juego, Juego
+from django.conf import settings
 
 # Create your views here.
 
@@ -33,5 +34,6 @@ def registrarse(request):
 
 def lista_juegos(request):
     juegos= Juego.objects.all()
-    context={"juegos":juegos}
+    context={"juegos":juegos,
+             'MEDIA_URL': settings.MEDIA_URL}
     return render(request, 'ReviewRealm/lista_juegos.html', context)

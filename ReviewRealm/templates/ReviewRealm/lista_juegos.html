@@ -20,7 +20,7 @@
             <p>{{juego.duracion}}</p>
             <p>{{juego.clasificacion}}</p>
             <p>{{juego.imagen_portada}}</p>
-            <img src="{{juego.imagen_portada}}" alt="Imagen de {{juego.titulo}}">
+            <img src="{{ MEDIA_URL }}{{juego.imagen_portada}}" alt="Imagen de {{juego.titulo}}">
 
         </div>
     {% endfor %}
