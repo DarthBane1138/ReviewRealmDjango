@@ -125,7 +125,7 @@ def juegos_findEdit(request, pk):
 def juegosUpdate(request):
     if request.method == "POST":
         # Es un POST, por lo tanto se recuperan los datos del formulario u se graban en la tabla.
-        # id_juego = request.POST["id_juego"]
+        id_juego = request.POST["id_juego"]
         titulo = request.POST["titulo"]
         descripcion = request.POST["descripcion"]
         anio = request.POST["anio"]
@@ -141,7 +141,14 @@ def juegosUpdate(request):
         # A continuación se hace referencia a los nombres del modelo "los nombres antes del = son los mismos nombres que aparecen en models.py"
         objGenero_Juego = Genero_Juego.objects.get(id_genero_juego= nombre_genero)
 
+        id_juego = request.POST.get("id_juego")
+        if id_juego:
+            juego = Juego.objects.get(pk=id_juego)
+        else:
+            juego = Juego()
+
         juego = Juego()
+        juego.id_juego = id_juego
         juego.titulo = titulo
         juego.descripcion = descripcion
         juego.anio = anio
@@ -153,11 +160,12 @@ def juegosUpdate(request):
         juego.calificacion = calificacion
         juego.clasificacion = clasificacion
         juego.imagen_portada = imagen_portada
-        #if imagen_portada:
-        #    juego.imagen_portada = imagen_portada
-        #else:
-        #    # Si no se carga un archivo nuevo, cargar la imagen existente desde juego.imagen_portada
-        #    juego.imagen_portada = juego.imagen_portada
+        if imagen_portada:
+            juego.imagen_portada = imagen_portada
+        elif id_juego and not imagen_portada:
+            # Si es una actualización y no se carga una nueva imagen, mantener la imagen existente
+            juego.imagen_portada = Juego.objects.get(pk=id_juego).imagen_portada
+
         juego.save()
 
         #nueva_imagen = input("Ingrese la nueva imagen: ")
