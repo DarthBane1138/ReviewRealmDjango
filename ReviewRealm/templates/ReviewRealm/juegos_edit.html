@@ -12,6 +12,7 @@
             <h2>Formulario CRUD para modificar datos de Juegos</h2>
                 <form action="{% url 'juegosUpdate' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
+                    <!-- Son los "names" los que posteriormente se recuperan en las vistas -->
                     <pre>Título:            <input type="text" name="titulo"          value="{{juego.titulo}}"></pre>
                     <pre>Descripcion:       <textarea name="descripcion" rows="4" cols="50">{{juego.descripcion}}</textarea></pre>
                     <pre>Año:               <input type="number" name="anio"                value="{{juego.anio}}"></pre>

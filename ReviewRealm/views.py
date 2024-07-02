@@ -52,6 +52,7 @@ def crud(request):
 def juegosAdd(request):
     if request.method != "POST":
         # No es un POST, por lo tanto se muestra el formulario para agregar
+        # Esta es la primera instancia, debido a que se llama al formulario, pero aún no se ha pinchado el botón agregar (El que llama a un "POST")
         generos_juegos = Genero_Juego.objects.all()
         context={'generos_juegos':generos_juegos}
         return render(request, 'ReviewRealm/juegos_add.html', context)
@@ -86,6 +87,7 @@ def juegosAdd(request):
                                     duracion = duracion,
                                     clasificacion = clasificacion,
                                     imagen_portada = imagen_portada )
+        # Esta es la creación de un objeto con los datos obtenidos desde el formulario
         
         obj.save()
         context = {'mensaje':"Ok, datos grabados..."}
