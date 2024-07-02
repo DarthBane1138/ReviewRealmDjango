@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Juegos</title>
+</head>
+<body>
+    <h1>Lista de juegos para editar</h1><br>
+    <br>
+
+    <button type="button">
+        <a href="{% url 'juegosAdd' %}">Agregar</a>
+    </button>
+
+    <div id="idMensajes">
+        {% if mensaje %}
+            {{mensaje}}
+        {% endif %}
+    </div>
+
+    <table>
+        {% if juegos %}
+            <th>ID Juego</th>
+            <th>Nombre Juego</th>
+            <th>Año</th>
+            <th>Género</th>
+            <th>Desarrollador</th>
+            <th>Eliminar</th>
+            <th>Modificar</th>
+            {% for x in juegos %}
+                <tr>
+                    <td>{{x.id_juego}}</td>
+                    <td>{{x.titulo}}</td>
+                    <td>{{x.anio}}</td>
+                    <td>{{x.id_genero_juego.nombre_genero}}</td>
+                    <td>{{x.desarrollador}}</td>
+                    <td><a href="{% url 'juegos_del' pk=x.id_juego %}">Eliminar</a></td>
+                    <td><a href="{% url 'juegos_findEdit' pk=x.id_juego %}">Modificar</a></td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#idMensajes").delay(2000).fadeOut("slow");
+        });
+    </script>
+</body>
+</html>

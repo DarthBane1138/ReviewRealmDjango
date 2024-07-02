@@ -9,6 +9,7 @@ class Genero_Juego(models.Model):
         return str(self.nombre_genero)
 
 class Juego(models.Model):
+    id_juego = models.AutoField(db_column='idJuego',primary_key=True)
     titulo = models.CharField(max_length=200)
     descripcion = models.TextField(blank=True, null=True)
     anio = models.IntegerField(validators=[MinValueValidator(1900), MaxValueValidator(9999)])
@@ -21,7 +22,7 @@ class Juego(models.Model):
     clasificacion = models.CharField(max_length=200)
     imagen_portada = models.ImageField(upload_to='portadas/', blank=True, null=True)
 
-    # Tuve que hace una instalación en python para poder usar imágenes (python -m pip install Pillow)
+    # Tuve que hacer una instalación en python para poder usar imágenes (python -m pip install Pillow)
 
     def __str__(self):
         return self.titulo

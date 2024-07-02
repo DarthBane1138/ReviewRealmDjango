@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Juegos</title>
+</head>
+<body>
+    <div style=" text-align: center;">
+        <h2>Formulario CRUD para crear Juegos</h2>
+        <form action="juegosAdd" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+                <pre>Título:            <input type="text" name="titulo"></pre>
+                <pre>Descripcion:       <textarea name="descripcion" rows="4" cols="50"></textarea></pre>
+                <pre>Año:               <input type="number" name="anio"></pre>
+                <pre>Género Juego:      <select name="nombre_genero">
+                    {% for genero_juego in generos_juegos %}
+                        <option value="{{genero_juego.id_genero_juego}}">{{genero_juego.nombre_genero}}</option>
+                    {% endfor %}
+                </select></pre>
+                <pre>Desarrollador:     <input type="text" name="desarrollador"></pre>
+                <pre>Publisher:         <input type="text" name="publisher"></pre>
+                <pre>Calificación:      <input type="number" name="calificacion"></pre>
+                <pre>Plataforma(s):     <input type="text" name="plataforma"></pre>
+                <pre>Duración:          <input type="number" name="duracion"></pre>
+                <pre>Clasificación:     <input type="text" name="clasificacion"></pre>
+                <pre>Imagen:            <input type="file" name="imagen_portada"></pre>
+
+            <input type="submit" name="opcion" value="Agregar">
+        </form><br><br>
+        <a href="{% url 'crud' %}">Volver</a>
+        <br>
+        <div id="idMensajes">
+            {% if mensaje %}
+                {{mensaje}}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- En el bucle for genero_juego va adquiriendo cada uno de los valores recuperados desde el "if" de la función juegosAdd 
+Generos_juegos apunta hacia la variable generos_juegos que recupera todos los datos desde la tabla Genero_Juego
+Dentro del bucle genero_juego. se refiere a la variable de cada recorrido, la que recupera en cada bucle, uno de los valores.-->

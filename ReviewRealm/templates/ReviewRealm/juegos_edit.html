@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Juegos</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        
+        {% if juego %}
+            <h2>Formulario CRUD para modificar datos de Juegos</h2>
+                <form action="{% url 'juegosUpdate' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <pre>Título:            <input type="text" name="titulo"          value="{{juego.titulo}}"></pre>
+                    <pre>Descripcion:       <textarea name="descripcion" rows="4" cols="50">{{juego.descripcion}}</textarea></pre>
+                    <pre>Año:               <input type="number" name="anio"                value="{{juego.anio}}"></pre>
+                    <pre>Género Juego:      <select name="nombre_genero">
+                        {% for genero_juego in generos_juegos %}
+                            {% if genero_juego.nombre_genero == juego.id_genero_juego.nombre_genero %}
+                                <option value="{{genero_juego.id_genero_juego}}" selected>{{genero_juego.nombre_genero}}</option>
+                            {% else %}
+                                <option value="{{genero_juego.id_genero_juego}}">{{genero_juego.nombre_genero}}</option>
+                            {% endif %}
+                            <!-- Si el género de for coincide con el género del juego, adigna esa opción en el formulario, en caso contrario pasa al else -->
+                        {% endfor %}
+                    </select></pre>
+                    <pre>Desarrollador:     <input type="text" name="desarrollador"         value="{{juego.desarrollador}}"></pre>
+                    <pre>Publisher:         <input type="text" name="publisher"             value="{{juego.publisher}}"></pre>
+                    <pre>Califiacion:       <input type="number" name="calificacion"        value="{{juego.calificacion}}"></pre>
+                    <pre>Plataforma(s):     <input type="text" name="plataforma"            value="{{juego.plataforma}}"></pre>
+                    <pre>Duracion:          <input type="number" name="duracion"            value="{{juego.duracion}}"></pre>
+                    <pre>Clasificación:     <input type="text" name="clasificacion"         value="{{juego.clasificacion}}"></pre>
+                    <pre>Imagen:
+                        {% if juego.imagen_portada %}
+                            <img src="{{juego.imagen_portada.url}}" alt="Imagen del Juego" style="max-width: 300px; max-height: 300px;">
+                        {% else %}
+                            No hay imagen disponible                  
+                        {% endif %}
+                    </pre>
+                    <pre>Nueva Imagen:      <input type="file" name="nueva_portada"></pre>
+                    <input type="hidden" name="id_juego" value="{{juego.id_juego}}">
+
+                    <input type="submit" name="opcion" value="Actualizar">
+                </form><br><br>
+        {% endif %}
+        
+        
+        <a href="{% url 'crud' %}">Volver</a>
+        <br>
+        <div id="idMensajes">
+            {% if mensaje %}
+                {{mensaje}}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
