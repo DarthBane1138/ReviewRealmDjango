@@ -2,6 +2,8 @@ from django.shortcuts import render
 from .models import Genero_Juego, Juego
 from django.conf import settings
 
+from .forms import GeneroJuegoForm
+
 # Create your views here.
 
 def index(request):
@@ -189,5 +191,81 @@ def juegosUpdate(request):
         juegos = Juego.objects.all()
         context={'juegos': juegos}
         return render(request, 'ReviewRealm/juegos_list.html', context)
+    
+###################################### Géneros Juegos ######################################
 
+def crud_generos_juegos(request):
 
+    generos_juegos = Genero_Juego.objects.all()
+    context = {'generos_juegos': generos_juegos}
+    print("Enviando datos generos_list")
+    return render(request, "ReviewRealm/generos_juegos_list.html", context)
+
+def generosJuegosAdd(request):
+    print("Estoy en el controlador generosJuegosAdd...")
+    context={}
+
+    if request.method == "POST":
+        print("El controlador es un POST...")
+        form = GeneroJuegoForm(request.POST)
+        if form.is_valid:
+            print("Estoy en agregar, is_valid")
+            form.save()
+
+            # Limpiar form
+            form = GeneroJuegoForm()
+
+            context={'mensaje':"Ok, datos grabados...", "form":form}
+            return render(request, "ReviewRealm/generos_juegos_add.html", context)
+    else:
+        form = GeneroJuegoForm()
+        context = {'form':form}
+        return render(request, 'ReviewRealm/generos_juegos_add.html', context)
+
+def generosJuegos_del(request, pk):
+    mensajes=[]
+    errores=[]
+    generos_juegos = Genero_Juego.objects.all()
+    try:
+        genero_juego = Genero_Juego.objects.get(id_genero_juego=pk)
+        context={}
+        if genero_juego:
+            genero_juego.delete()
+            mensajes.append("Bien, datos eliminados...")
+            context = {'generos_juegos':generos_juegos, 'mensajes':mensajes, 'errores':errores}
+            return render(request, 'ReviewRealm/generos_juegos_list.html', context)
+    except:
+        print("Error,id no existe...")
+        generos_juegos=Genero_Juego.objects.all()
+        mensaje="Error, id no existe"
+        context={'mensaje':mensaje, 'generos_juegos':generos_juegos}
+        return render(request, 'ReviewRealm/generos_juegos_list.html', context)
+
+def generosJuegos_edit(request, pk):
+    context={}
+    try:
+        genero_juego=Genero_Juego.objects.get(id_genero_juego=pk)
+        if genero_juego:
+            print("Edit encontró el género juego...")
+            if request.method == "POST":
+                print("edit, es un POST")
+                form = GeneroJuegoForm(request.POST,instance=genero_juego)
+                form.save()
+                mensaje="Bien, datos actualizados..."
+                print(mensaje)
+                context = {'genero_juego':genero_juego, 'form':form, 'mensaje':mensaje}
+                return render(request, 'ReviewRealm/generos_juegos_edit.html', context)
+            else:
+                # No es un POST
+                print("Edit, no es un POST")
+                form = GeneroJuegoForm(instance=genero_juego)
+                mensaje=""
+                context = {'genero_juego':genero_juego, 'form':form, 'mensaje':mensaje}
+                print(context)
+                return render(request, 'ReviewRealm/generos_juegos_edit.html', context)
+    except:
+        print("Error, id no existe...")
+        generos_juegos=Genero_Juego.objects.all()
+        mensaje="Error, id no existe"
+        context={'mensaje':mensaje, 'generos_juegos':generos_juegos}
+        return render(request, 'ReviewRealm/generos_juegos_list.html', context)
