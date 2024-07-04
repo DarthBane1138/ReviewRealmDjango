@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Juegos</title>
-</head>
-<body>
+{% extends 'Administrador/base.html' %}
+{% load static %}
+{% block title %} Agregar Juegos {% endblock %}
+
+{% block content %}
+
     <div style=" text-align: center;">
         <h2>Formulario CRUD para crear Juegos</h2>
         <form action="juegosAdd" method="POST" enctype="multipart/form-data">
@@ -35,9 +33,8 @@
                 {{mensaje}}
             {% endif %}
         </div>
-    </div>
-</body>
-</html>
+
+{% endblock %}
 
 <!-- En el bucle for genero_juego va adquiriendo cada uno de los valores recuperados desde el "if" de la función juegosAdd 
 Generos_juegos apunta hacia la variable generos_juegos que recupera todos los datos desde la tabla Genero_Juego

@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario Géneros Juegos</title>
-</head>
-<body>
+{% extends 'Administrador/base.html' %}
+{% load static %}
+{% block title %} Agregar Géneros Juegos {% endblock %}
+
+{% block content %}
+<div class="container mt-4">
     <h1>Formulario Géneros Juegos</h1>
-    
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_table }}
@@ -24,5 +21,7 @@
     <br>
     <a href="{% url 'crud_generos_juegos' %}"> Volver </a>
     <br>
-</body>
-</html>
+</div>
+
+
+{% endblock %}

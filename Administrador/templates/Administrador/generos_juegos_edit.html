@@ -1,17 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edición Géneros Juegos</title>
-</head>
-<body>
+{% extends 'Administrador/base.html' %}
+{% load static %}
+{% block title %} Editar Géneros Juegos {% endblock %}
+
+{% block content %}
+
     <div style="text-align: center;">
         <h2>Formulario para Actualizar Géneros</h2><br>
 
         {% if genero_juego %}
-            
-
             <form action="" method="POST">
                 {% csrf_token %}
                     {{ form.as_table }}
@@ -28,5 +24,5 @@
         <br><br>
         <a href="{% url 'crud_generos_juegos' %}"> Volver </a>
     </div>
-</body>
-</html>
+
+{% endblock %}

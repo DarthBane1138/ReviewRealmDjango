@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modificar Juegos</title>
-</head>
-<body>
+{% extends 'Administrador/base.html' %}
+{% load static %}
+{% block title %} Editar Juegos {% endblock %}
+
+{% block content %}
+
     <div style="text-align: center;">
         
         {% if juego %}
@@ -28,9 +26,9 @@
                     </select></pre>
                     <pre>Desarrollador:     <input type="text" name="desarrollador"         value="{{juego.desarrollador}}"></pre>
                     <pre>Publisher:         <input type="text" name="publisher"             value="{{juego.publisher}}"></pre>
-                    <pre>Califiacion:       <input type="number" name="calificacion"        value="{{juego.calificacion}}"></pre>
+                    <pre>Calificación:       <input type="number" name="calificacion"        value="{{juego.calificacion}}"></pre>
                     <pre>Plataforma(s):     <input type="text" name="plataforma"            value="{{juego.plataforma}}"></pre>
-                    <pre>Duracion:          <input type="number" name="duracion"            value="{{juego.duracion}}"></pre>
+                    <pre>Duración:          <input type="number" name="duracion"            value="{{juego.duracion}}"></pre>
                     <pre>Clasificación:     <input type="text" name="clasificacion"         value="{{juego.clasificacion}}"></pre>
                     <pre>Imagen:
                         {% if juego.imagen_portada %}
@@ -55,5 +53,5 @@
             {% endif %}
         </div>
     </div>
-</body>
-</html>
+
+{% endblock %}

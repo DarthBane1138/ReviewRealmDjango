@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 
 # Create your views here.
-@login_required
 def menu(request):
     juegos = Juego.objects.all()
     generos_juegos = Genero_Juego.objects.all()
@@ -92,8 +91,10 @@ def juegosAdd(request):
         # Esta es la creación de un objeto con los datos obtenidos desde el formulario
         
         obj.save()
-        context = {'mensaje':"Ok, datos grabados..."}
-        return render(request, 'Administrador/juegos_add.html')
+
+        generos_juegos = Genero_Juego.objects.all()
+        context = {'generos_juegos': generos_juegos, 'mensaje': "Ok, datos grabados..."} 
+        return render(request, 'Administrador/juegos_add.html', context)
 
 @login_required
 def juegos_del(request,pk):
@@ -199,7 +200,6 @@ def juegosUpdate(request):
 
 @login_required
 def crud_generos_juegos(request):
-
     generos_juegos = Genero_Juego.objects.all()
     context = {'generos_juegos': generos_juegos}
     print("Enviando datos generos_list")
@@ -276,23 +276,3 @@ def generosJuegos_edit(request, pk):
         mensaje="Error, id no existe"
         context={'mensaje':mensaje, 'generos_juegos':generos_juegos}
         return render(request, 'Administrador/generos_juegos_list.html', context)
-    
-@login_required
-def mantenedorIndex(request):
-    juegos = Juego.objects.all()
-    generos_juegos = Genero_Juego.objects.all()
-    context={"juegos":juegos, "generos_juegos":generos_juegos}
-    return render(request, 'Administrador/index_list.html', context)
-
-@login_required
-def lista_juegos(request):
-    juegos= Juego.objects.all()
-    context={"juegos":juegos, 'MEDIA_URL': settings.MEDIA_URL}
-    return render(request, 'Administrador/lista_juegos.html', context)
-
-@login_required
-def listadoSQL(request):
-    juegos= Juego.objects.raw('SELECT * FROM ReviewRealm_juego')
-    print(juegos)
-    context={"juegos":juegos}
-    return render(request, 'Administrador/listadoSQL.html', context)
