@@ -21,7 +21,9 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('ReviewRealm/', include('ReviewRealm.urls'))
+    path('ReviewRealm/', include('ReviewRealm.urls')),
+    path("accounts/", include("django.contrib.auth.urls")),
+    path('Administrador/', include('Administrador.urls')),
 ]
 
 if settings.DEBUG:

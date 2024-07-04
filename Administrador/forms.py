@@ -1,5 +1,5 @@
 from django import forms
-from .models import Genero_Juego
+from ReviewRealm.models import Genero_Juego
 
 from django.forms import ModelForm
 

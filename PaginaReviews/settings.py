@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ReviewRealm',
+    'Administrador'
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,7 @@ ROOT_URLCONF = 'PaginaReviews.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "templates",],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -67,6 +68,8 @@ TEMPLATES = [
         },
     },
 ]
+
+LOGIN_REDIRECT_URL="menu" # Ojito acá, puede que haya que camabiarlo
 
 WSGI_APPLICATION = 'PaginaReviews.wsgi.application'
 
