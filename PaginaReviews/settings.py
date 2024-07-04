@@ -69,7 +69,8 @@ TEMPLATES = [
     },
 ]
 
-LOGIN_REDIRECT_URL="menu" # Ojito acá, puede que haya que camabiarlo
+LOGIN_REDIRECT_URL="index" # Ojito acá, puede que haya que camabiarlo
+LOGOUT_REDIRECT_URL = "index"
 
 WSGI_APPLICATION = 'PaginaReviews.wsgi.application'
 

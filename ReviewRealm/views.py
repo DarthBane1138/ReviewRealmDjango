@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.conf import settings
+from Administrador.models import *
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -34,5 +35,3 @@ def recomendacion_aleatoria(request):
 def registrarse(request):
     context={}
     return render(request, 'ReviewRealm/registrarse.html', context)
-
-

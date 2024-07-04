@@ -10,6 +10,8 @@ html, body {
   background-color: rgb(65, 65, 65) !important; /* Gris oscuro para el fondo */
 }
 
+/* CONFIGURACIONES NAVBAR */
+
 /* Para el color de las letras de los elementos de la navbar */
 .navbar-nav .nav-link {
   color: rgb(255, 255, 255); /* Blanco para las letras */

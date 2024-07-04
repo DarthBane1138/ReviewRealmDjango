@@ -1,5 +1,5 @@
 #from django.conf.urls import urls
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 
@@ -13,4 +13,5 @@ urlpatterns = [
     path('perfil', views.perfil, name='perfil'),
     path('recomendacion_aleatoria', views.recomendacion_aleatoria, name='recomendacion_aleatoria'),
     path('registrarse', views.registrarse, name='registrarse'),
+    path('Administrador/', include('Administrador.urls')), # Se incluyen las URLs de la aplicación Administrador
 ]
