@@ -1,8 +1,8 @@
-html, body {
+body {
   height: 200%;
   background-image: linear-gradient(to bottom, rgb(23, 43, 80), rgb(68, 103, 167));
   margin: 0;
-  padding: 0;
+  padding-bottom:0 ;
 }
 
 /* Cambiar el color de fondo de la navbar */
@@ -64,7 +64,7 @@ html, body {
 }
 
 .subtitulo_index {
-  color: green;
+  color: rgb(3, 158, 3);
   text-shadow: -1px -1px 1px rgb(0, 0, 0), 1px -1px 1px rgb(0, 0, 0), -1px 1px 1px rgb(0, 0, 0), 1px 1px 10px rgb(0, 0, 0);
   font-weight: bolder;
 }
@@ -126,7 +126,7 @@ html, body {
 .caja-fija {
   height: 1080px; /* Altura fija */
   width: 1920px; /* Anchura inicial fija */
-  /*max-width: 500px; /* Anchura máxima fija */
+
 }
 
 .form-label {
@@ -149,11 +149,6 @@ html, body {
 
 #passwordHelpBlock {
   color: rgb(187, 187, 187);
-}
-
-#cuerpo_categorias {
-  color: rgba(0, 185, 46);
-  background-color: transparent;
 }
 
 /* A partir de acá se actualizan estilos que se incorporar para la segunda entrega */
@@ -207,11 +202,35 @@ html, body {
 
 #columna_principal {
   background-color: rgba(0, 0, 0, 0.5);
-  height: 860px;
+  padding-bottom: 10px;
+  min-height: 600px;
 }
 
 #carrouselPrev,
 #carrouselNext {
   background-color: transparent;
   border: none;
+}
+
+/* Estilo para todos los elementos con el id="datoJuego" */
+.datoJuego {
+    color: white;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0); /* Leve sombreado */
+    margin-bottom: 5px; /* Espacio entre elementos */
+}
+
+.descripcionJuego {
+  background-color: rgba(0, 255, 255, 0.048);
+  color: rgb(171, 231, 174);
+  text-shadow: 1px 1px 2px rgb(0, 0, 0); /* Leve sombreado */
+  margin-right: 10px;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  margin-right: 60px;
+  text-align: justify;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Difumina los bordes */
 }

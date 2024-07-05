@@ -5,27 +5,48 @@
 {% block content %}
   <div class="contenedor-titulo">
     <h1 class ="text-center">Recomendación diaria</h1>
-    </div>
+  </div>
     
     <!-- Acá haré 3 columnas para centrar el contenido en la del medio -->
-    <div class="container-fluid" id="cuerpo_categorias">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-2"></div>
         <div class="col-8" id="columna_principal">
           <br><br>
-          <h2 class="subtitulo_index text-center">La recomendación aleatoria es:</h2>
-          <h3 class="subtitulo_index_2 text-center" id="titulo_juego"></h3>
-          <br>
-          <!-- Se subdivide la columna central en dos columnas -->
-          <div class="row">
-            <!-- Columna para la imagen -->
-            <div class="col-md-6">
-              <img id="imagen_juego" alt="Imagen del Juego" class="img-fluid mx-auto d-block" width="400px">
-            </div>
-            <!-- Columna para la lista -->
-            <div class="col-md-6 align-self-center">
-              <ul class="lista_pagina" id="detalles_juego"></ul>
-            </div>
+          {% if juegos %}
+            {% with random_game=juegos|random %}
+              <h2 class="subtitulo_index text-center">La recomendación aleatoria es:</h2>
+              <h3 class="subtitulo_index_2 text-center" id="titulo_juego">{{random_game.titulo}}</h3>
+              <br>
+              <!-- Se subdivide la columna central en dos columnas -->
+              <div class="row">
+                <!-- Columna para la imagen -->
+                <div class="col-md-6">
+                  {% if random_game.imagen_portada %}
+                    <img src="{{random_game.imagen_portada.url}}" alt="Imagen del Juego" style="max-width: 400px; max-height: 400px; display: block; margin: 0 auto;">
+                  {% else %}
+                    No hay imagen disponible
+                  {% endif %}
+                </div>
+                <!-- Columna para la lista -->
+                <div class="col-md-6 align-self-center">
+                  <ul>
+                    <div class="descripcionJuego">
+                      Descripción<br><br>
+                      <div>{{random_game.descripcion}}</div><br>
+                    </div>
+                    <li class="datoJuego">    Año: {{random_game.anio}}</li>
+                    <li class="datoJuego">    Género: {{random_game.id_genero_juego.nombre_genero}}</li>
+                    <li class="datoJuego">    Desarrollador: {{random_game.desarrollador}}</li>
+                    <li class="datoJuego">    Publisher: {{random_game.publisher}}</li>
+                    <li class="datoJuego">    Calificación: {{random_game.calificacion}}</li>
+                    <li class="datoJuego">    Plataformas: {{random_game.plataforma}}</li>
+                    <li class="datoJuego">    Duración: {{random_game.duracion}}</li>
+                    <li class="datoJuego">    Clasificación: {{random_game.clasificacion}}</li>
+                  </ul>
+                </div>
+              {% endwith %}
+            {% endif %}
 
             <div id="linkIgn"><br>
               <p>Por el momento esta sección está en construcción, pero te queremos recomendar que visites esta página donde hay un ranking muy interesante de los 100 mejores videojuegos de la historia</p>

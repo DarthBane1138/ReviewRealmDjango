@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.conf import settings
 from Administrador.models import *
+from .models import Genero_Juego, Juego
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -13,7 +14,11 @@ def index(request):
     return render(request, 'ReviewRealm/index.html', context)
 
 def categorias(request):
-    context={}
+    generos_juegos = Genero_Juego.objects.all()
+    context={'generos_juegos':generos_juegos}
+    # Se cuentan cuantos juegos hay para cada género
+    for x in generos_juegos:
+        x.cantidad_juegos = Juego.objects.filter(id_genero_juego=x).count()
     return render(request, 'ReviewRealm/categorias.html', context)
 
 def ingresar_juego(request):
@@ -29,7 +34,9 @@ def perfil(request):
     return render(request, 'ReviewRealm/perfil.html', context)
 
 def recomendacion_aleatoria(request):
-    context={}
+    juegos = Juego.objects.all()
+    generos_juegos = Genero_Juego.objects.all()
+    context = {'juegos':juegos, 'generos_juegos':generos_juegos}
     return render(request, 'ReviewRealm/recomendacion_aleatoria.html', context)
 
 def registrarse(request):
