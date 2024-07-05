@@ -1,0 +1,34 @@
+{% extends 'ReviewRealm/base.html' %}
+{% load static %}
+{% block title %} Juegos por Género {% endblock %}
+
+{% block content %}
+
+<!-- Tabla para mostrar juegos-->
+<ul>
+    <div class="contenedor-titulo">
+        <h1 class ="text-center">Juegos por Género: {{juegos.id_genero_juego.nombre_genero}}</h1>
+    </div>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID Juego</th>
+                <th>Nombre Juego</th>
+                <th>Año</th>
+                <th>Desarrollador</th>
+            </tr>
+        </thead>
+        {% if juegos %}
+            {% for juego in juegos %}
+                <tr class="fila_juego_por_genero">
+                    <td>{{juego.id_juego}}</td>
+                    <td>{{juego.titulo}}</td>
+                    <td>{{juego.anio}}</td>
+                    <td>{{juego.desarrollador}}</td>
+                </tr>   
+            {% endfor %}
+        {% endif %}
+    </table>
+</ul>
+
+{% endblock %}

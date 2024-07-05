@@ -25,11 +25,13 @@
             </thead>
             <tbody class="table-group-divider">
               {% for x in generos_juegos %}
-              <tr>
-                <th scope="row">{{x.id_genero_juego}}</th>
-                <td>{{x.nombre_genero}}</td>
-                <td>{{x.cantidad_juegos}}</td>
-              </tr>
+                {% if x.cantidad_juegos > 0 %}
+                  <tr>
+                    <th scope="row">{{x.id_genero_juego}}</th>
+                    <td><a href="{% url 'juegos_por_genero' pk=x.id_genero_juego %}">{{x.nombre_genero}}</a></td>
+                    <td>{{x.cantidad_juegos}}</td>
+                  </tr>
+                {% endif %}
               {% endfor %}
             </tbody>
           {% endif %}

@@ -234,3 +234,11 @@ body {
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Difumina los bordes */
 }
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: rgba(206, 206, 206, 0.863);
+}
+
+.table-striped tbody tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.548);
+}

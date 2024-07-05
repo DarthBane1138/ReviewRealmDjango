@@ -42,3 +42,10 @@ def recomendacion_aleatoria(request):
 def registrarse(request):
     context={}
     return render(request, 'ReviewRealm/registrarse.html', context)
+
+def juegos_por_genero(request, pk):
+    generos_juegos = Genero_Juego.objects.get(id_genero_juego=pk)
+    juegos = Juego.objects.filter(id_genero_juego=pk)
+    context = {'generos_juegos':generos_juegos, 'juegos':juegos}
+    return render(request, 'ReviewRealm/juegos_por_genero.html', context)
+

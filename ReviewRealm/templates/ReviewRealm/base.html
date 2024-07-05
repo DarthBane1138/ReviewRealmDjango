@@ -32,10 +32,10 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <!-- Links de barra de navegación -->
-                        <a class="nav-link" href="index">Inicio</a>
-                        <a class="nav-link" href="categorias">Categorías</a>
-                        <a class="nav-link" href="recomendacion_aleatoria">Recomendación aleatoria</a>
-                        <a class="nav-link" href="ingresar_juego">Ingresar Juego</a>
+                        <a class="nav-link" href="{% url 'index' %}">Inicio</a>
+                        <a class="nav-link" href="{% url 'categorias' %}">Categorías</a>
+                        <a class="nav-link" href="{% url 'recomendacion_aleatoria' %}">Recomendación aleatoria</a>
+                        <a class="nav-link" href="{% url 'ingresar_juego' %}">Ingresar Juego</a>
                         <!-- Sólo podrá ingresar al mantenedor si el usuario es parte del staff -->
                         {% if user.is_authenticated and user.is_staff%}
                             <a class="nav-link" href="{% url 'menu' %}">Mantenedor</a>
