@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.conf import settings
-from Administrador.models import *
+from Administrador.views import *
 from .models import Genero_Juego, Juego
 
 from django.contrib.auth.decorators import login_required
@@ -48,4 +48,10 @@ def juegos_por_genero(request, pk):
     juegos = Juego.objects.filter(id_genero_juego=pk)
     context = {'generos_juegos':generos_juegos, 'juegos':juegos}
     return render(request, 'ReviewRealm/juegos_por_genero.html', context)
+
+def juego(request, pk):
+    juego = Juego.objects.filter(id_juego=pk)
+    context = {'juego':juego}
+    print("Se encontró un juego")
+    return render(request, 'ReviewRealm/juego.html', context)
 

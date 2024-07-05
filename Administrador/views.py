@@ -13,7 +13,6 @@ def menu(request):
     context = {'juegos':juegos, 'generos_juegos':generos_juegos}
     return render(request, 'Administrador/index.html', context)
 
-@login_required
 def registro(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -25,9 +24,9 @@ def registro(request):
 
         if password1 != password2:
             mensaje = "Las contraseñas no coinciden."
-        elif User.objects.filter(username=username).exist():
+        elif User.objects.filter(username=username).exists():
             mensaje = "El nombre de usuario ya está en uso."
-        elif User.objects.filter(email=email).exist():
+        elif User.objects.filter(email=email).exists():
             mensaje = "El correo ya se encuentra registrado."
         else:
             user = User.objects.create_user(username=username, email=email, password=password1)

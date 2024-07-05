@@ -15,4 +15,5 @@ urlpatterns = [
     path('registrarse', views.registrarse, name='registrarse'),
     path('Administrador/', include('Administrador.urls')), # Se incluyen las URLs de la aplicación Administrador
     path('juegos_por_genero/<int:pk>', views.juegos_por_genero, name='juegos_por_genero'),
+    path('juego/<int:pk>', views.juego, name='juego'),
 ]

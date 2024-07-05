@@ -12,9 +12,33 @@
     <div class="row">
         <div class="col-2"></div>
         <div class="col-8" id="columna_principal">
-            {% if juego %}
-            
-            {% endif %}
+            {% for titulo in juego %}
+                {% if juego %}
+                    <h3 class="subtitulo_index_2 text-center" id="titulo_juego" style="margin-top: 50px;">{{titulo.titulo}}</h3>
+                    <!-- Se subdivide la columna central en dos columnas -->
+                    <div class="row" style="margin-top: 50px; margin-bottom: 50px;">
+                        <div class="col-md-6">
+                            <img src="{{titulo.imagen_portada.url}}" alt="Imagen del Juego" style="max-width: 400px; max-height: 400px; display: block; margin: 0 auto;">
+                        </div>
+                        <div class="col-md-6 align-self-center">
+                            <ul>
+                                <div class="descripcionJuego">
+                                  Descripción<br><br>
+                                  <div>{{titulo.descripcion}}</div><br>
+                                </div>
+                                <li class="datoJuego">    Año: {{titulo.anio}}</li>
+                                <li class="datoJuego">    Género: {{titulo.id_genero_juego.nombre_genero}}</li>
+                                <li class="datoJuego">    Desarrollador: {{titulo.desarrollador}}</li>
+                                <li class="datoJuego">    Publisher: {{titulo.publisher}}</li>
+                                <li class="datoJuego">    Calificación: {{titulo.calificacion}}</li>
+                                <li class="datoJuego">    Plataformas: {{titulo.plataforma}}</li>
+                                <li class="datoJuego">    Duración: {{titulo.duracion}}</li>
+                                <li class="datoJuego">    Clasificación: {{titulo.clasificacion}}</li>
+                              </ul>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
         </div>
         <div class="col-2"></div>
     </div>
