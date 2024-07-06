@@ -22,7 +22,11 @@ def categorias(request):
     return render(request, 'ReviewRealm/categorias.html', context)
 
 def ingresar_juego(request):
-    context={}
+    query = request.GET.get('q')
+    results = []
+    if query:
+        results = Juego.objects.filter(titulo__icontains = query)
+    context={'results': results, 'query':query}
     return render(request, 'ReviewRealm/ingresar_juego.html', context)
 
 def inicio_sesion(request):
@@ -54,4 +58,50 @@ def juego(request, pk):
     context = {'juego':juego}
     print("Se encontró un juego")
     return render(request, 'ReviewRealm/juego.html', context)
+
+@login_required
+def agregar_juego(request):
+    if request.method != "POST":
+        generos_juegos = Genero_Juego.objects.all()
+        context = {'generos_juegos':generos_juegos}
+        return render(request, 'ReviewRealm/agregar_juego.html', context)
+    
+    else:
+        # Validación de que no existe el juego (Por título)
+        if Juego.objects.filter(titulo=titulo).exist():
+            generos_juegos = Genero_Juego.objects.all()
+            context = {'genero_juegos':generos_juegos, 'mensaje': "Ya existe un juego con este título"}
+
+        titulo          = request.POST["titulo"]
+        descripcion     = request.POST["descripcion"]
+        anio            = request.POST["anio"]
+        nombre_genero   = request.POST["nombre_genero"]
+        desarrollador   = request.POST["desarrollador"]
+        publisher       = request.POST["publisher"]
+        calificacion    = request.POST["calificacion"]
+        plataforma      = request.POST["plataforma"]
+        duracion        = request.POST["duracion"]
+        clasificacion   = request.POST["clasificacion"]
+        imagen_portada  = request.FILES.get("imagen_portada")
+
+        objGenero_Juego = Genero_Juego.objects.get(id_genero_juego = nombre_genero)
+        obj = Juego.objects.create (
+            titulo          = titulo,
+            descripcion     = descripcion,
+            anio            = anio,
+            id_genero_juego = objGenero_Juego,
+            desarrollador   = desarrollador,
+            publisher       = publisher,
+            calificacion    = calificacion,
+            plataforma      = plataforma,
+            duracion        = duracion,
+            clasificacion   = clasificacion,
+            imagen_portada  = imagen_portada
+        )
+
+        obj.save()
+
+        generos_juegos = Genero_Juego.objects.all()
+        context = {'generos_juegos': generos_juegos, 'mensaje': "El juego ha sido ingresado exitosamente"}
+        return render(request, 'ReviewRealm/agregar_juego.html', context)
 

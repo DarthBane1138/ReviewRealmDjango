@@ -16,4 +16,6 @@ urlpatterns = [
     path('Administrador/', include('Administrador.urls')), # Se incluyen las URLs de la aplicación Administrador
     path('juegos_por_genero/<int:pk>', views.juegos_por_genero, name='juegos_por_genero'),
     path('juego/<int:pk>', views.juego, name='juego'),
+    path('ingresar_juego', views.ingresar_juego, name='ingresar_juego'),
+    path('agregar_juego', views.agregar_juego, name='agregar_juego'),
 ]

@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="contenedor-titulo">
-        <h1 class ="text-center">Ingresar Juego</h1>
+        <h1 class ="text-center">Buscar Juegos</h1>
     </div>
 
     <!-- Columnas para contenido -->
@@ -14,20 +14,35 @@
         <div class="col-8" id="columna_principal">
           <!-- La idea de esta sección es que se escriba el nombre del juego, y si este está, poder agregar datos del usuario actual al juego, si no está se debería poder ingresar un juego nuevo a la base de datos -->
           <br><br>
-          <h2 class="subtitulo_index text-center">Agrega los datos de un juego para contribuir a nuestra comunidad:</h2>
+          <h2 class="subtitulo_index text-center">Busca algún juego para obtener sus datos:</h2>
           <br>
-          <h5 class="subtitulo_index_3 text-center">Comienza escribiendo el nombre del juego que quieres ingresar, si este no está en nuestra base de datos eres libre de agregarlo a nuestra base de datos</h3>
+          <h5 class="subtitulo_index_3 text-center">Busca los juegos por palabras claves</h3>
           <br>
           <div class="mb-3">
-            <input type="search" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese el nombre del juego acá...">
+            <form method="GET" action="{% url 'ingresar_juego' %}">
+              <input type="text" name="q" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese el nombre del juego acá...">
+              <div class="text-center">  
+                <button type="submit"> BUSCAR </button>
+              </div>
+            </form>
             <br>
-          <div class="text-center">  
-            <button type="button" class="btn btn-primary" onclick="agregar();">
-              AGREGAR
           </div>
+          
+          <h2 class="subtitulo_index text-center">Resultados de la búsqueda</h2>
+          <ul>
+            {% for juego in results %}
+            <li class="datoJuego"><a href="{% url 'juego' pk=juego.id_juego %}">{{juego.titulo}}</a></li>
+            {% empty %}
+            <li>No se encontraron resultados</li>
+            {% endfor %}
+          </ul>
+
+          <h5 class="subtitulo_index_3 text-center">Si el juego que buscas no está disponible, puedes ingresarlo a continuación</h3>
+            <br>
+            <a href="{% url 'agregar_juego' %}" class="btn btn-primary agregar" id="botonAgregarJuego">Agregar un juego nuevo</a>
         </div>
         <div class="col-2"></div>
-      </div>
+
     </div>
 
 {% endblock %}

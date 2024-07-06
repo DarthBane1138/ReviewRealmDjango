@@ -1,0 +1,41 @@
+{% extends 'ReviewRealm/base.html' %}
+{% load static %}
+{% block title %} Agregar Juegos {% endblock %}
+
+{% block content %}
+
+<div class="contenedor-titulo">
+    <h1 class="text-center">Ingresar Juegos Nuevos</h1>
+  </div>
+
+    <div style=" text-align: center;">
+        <h3 class="subtitulo_index_2 text-center" id="titulo_juego" style="margin-top: 50px; margin-bottom: 50px;">Ingresa los datos del juego que deseas agregar</h3>
+        <form action="juegosAdd" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+                <pre class="letraAgregarJuego">Título:            <input class="casillaAgregarJuego" type="text" name="titulo"></pre>
+                <pre class="letraAgregarJuego">Descripcion:       <textarea class="casillaAgregarJuego" name="descripcion" rows="4" cols="50"></textarea></pre>
+                <pre class="letraAgregarJuego">Año:               <input class="casillaAgregarJuego" type="number" name="anio"></pre>
+                <pre class="letraAgregarJuego">Género Juego:      <select class="casillaAgregarJuego" name="nombre_genero">
+                    {% for genero_juego in generos_juegos %}
+                        <option value="{{genero_juego.id_genero_juego}}">{{genero_juego.nombre_genero}}</option>
+                    {% endfor %}
+                </select></pre>
+                <pre class="letraAgregarJuego">Desarrollador:     <input class="casillaAgregarJuego" type="text" name="desarrollador"></pre>
+                <pre class="letraAgregarJuego">Publisher:         <input class="casillaAgregarJuego" type="text" name="publisher"></pre>
+                <pre class="letraAgregarJuego">Calificación:      <input class="casillaAgregarJuego" type="number" name="calificacion"></pre>
+                <pre class="letraAgregarJuego">Plataforma(s):     <input class="casillaAgregarJuego" type="text" name="plataforma"></pre>
+                <pre class="letraAgregarJuego">Duración:          <input class="casillaAgregarJuego" type="number" name="duracion"></pre>
+                <pre class="letraAgregarJuego">Clasificación:     <input class="casillaAgregarJuego" type="text" name="clasificacion"></pre>
+                <pre class="letraAgregarJuego">Imagen:            <input type="file" name="imagen_portada"></pre>
+
+            <input type="submit" name="opcion" value="Agregar">
+        </form><br><br>
+        <a href="{% url 'crud' %}">Volver</a>
+        <br>
+        <div id="idMensajes">
+            {% if mensaje %}
+                {{mensaje}}
+            {% endif %}
+        </div>
+
+{% endblock %}

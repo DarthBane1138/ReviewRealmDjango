@@ -4,6 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            height: 100%;
+            background-image: linear-gradient(to bottom, #303030, #b9b9b9a8); /* Cambia los colores según tus preferencias */
+            font-family: Arial, sans-serif;
+        }
+        .card {
+            margin-bottom: 400px;
+            border: 3px solid #00000086; /* Borde claro */
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+        }
+        .card-header {
+            background-color: #4caf50; /* Verde */
+            color: white;
+            padding: 10px;
+        }
+        .form-control {
+            border-color: #81c784; /* Verde más claro */
+        }
+        .btn-primary {
+            background-color: #4caf50; /* Verde */
+            border-color: #4caf50; /* Verde */
+        }
+        .btn-primary:hover {
+            background-color: #45a049; /* Verde más oscuro al pasar el mouse */
+            border-color: #45a049; /* Verde más oscuro al pasar el mouse */
+        }
+        .error {
+            color: #f44336; /* Rojo */
+        }
+    </style>
     <title>Registro</title>
 </head>
 <body>
@@ -39,7 +70,7 @@
                         </form>
                     </div>
 
-                    <div id="mensaje">
+                    <div id="mensaje" style="text-align: center; color: red; margin-bottom: 30px;">
                         {% if mensaje %}
                         {{ mensaje }}
                         {% endif %}
