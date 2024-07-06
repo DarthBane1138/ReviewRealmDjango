@@ -3,10 +3,13 @@ from ReviewRealm.models import Genero_Juego, Juego
 from .forms import GeneroJuegoForm
 
 from django.contrib.auth.decorators import login_required
+from .decorators import staff_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 
 # Create your views here.
+@login_required
+@staff_required
 def menu(request):
     juegos = Juego.objects.all()
     generos_juegos = Genero_Juego.objects.all()
@@ -43,12 +46,14 @@ def registro(request):
     return render(request, "registration/registro.html")
 
 @login_required
+@staff_required
 def crud(request):
     juegos = Juego.objects.all()
     context = {'juegos': juegos}
     return render(request, 'Administrador/juegos_list.html', context)
 
 @login_required
+@staff_required
 def juegosAdd(request):
     if request.method != "POST":
         # No es un POST, por lo tanto se muestra el formulario para agregar
@@ -96,6 +101,7 @@ def juegosAdd(request):
         return render(request, 'Administrador/juegos_add.html', context)
 
 @login_required
+@staff_required
 def juegos_del(request,pk):
     context={}
     try:
@@ -113,6 +119,7 @@ def juegos_del(request,pk):
         return render(request, 'Administrador/juegos_list.html', context)
 
 @login_required
+@staff_required
 def juegos_findEdit(request, pk):
 
     if pk != "":
@@ -128,7 +135,8 @@ def juegos_findEdit(request, pk):
             context={'mensaje':"Error, id no existe..."}
             return render(request, 'Administrador/juegos_list.html', context)
 
-@login_required        
+@login_required
+@staff_required        
 def juegosUpdate(request):
     if request.method == "POST":
         # Es un POST, por lo tanto se recuperan los datos del formulario u se graban en la tabla.
@@ -198,6 +206,7 @@ def juegosUpdate(request):
 ###################################### Géneros Juegos ######################################
 
 @login_required
+@staff_required
 def crud_generos_juegos(request):
     generos_juegos = Genero_Juego.objects.all()
     context = {'generos_juegos': generos_juegos}
@@ -205,6 +214,7 @@ def crud_generos_juegos(request):
     return render(request, "Administrador/generos_juegos_list.html", context)
 
 @login_required
+@staff_required
 def generosJuegosAdd(request):
     print("Estoy en el controlador generosJuegosAdd...")
     context={}
@@ -227,6 +237,7 @@ def generosJuegosAdd(request):
         return render(request, 'Administrador/generos_juegos_add.html', context)
 
 @login_required
+@staff_required
 def generosJuegos_del(request, pk):
     mensajes=[]
     errores=[]
@@ -247,6 +258,7 @@ def generosJuegos_del(request, pk):
         return render(request, 'Administrador/generos_juegos_list.html', context)
 
 @login_required
+@staff_required
 def generosJuegos_edit(request, pk):
     context={}
     try:
@@ -275,3 +287,7 @@ def generosJuegos_edit(request, pk):
         mensaje="Error, id no existe"
         context={'mensaje':mensaje, 'generos_juegos':generos_juegos}
         return render(request, 'Administrador/generos_juegos_list.html', context)
+    
+def notallowed(request):
+    context={}
+    return render(request, 'Administrador/notallowed.html', context)

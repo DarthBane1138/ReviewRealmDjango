@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Restringido</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Estilos personalizados -->
+    <style>
+        body {
+            background-image: url('{% static "Administrador/img/Backrooms_model.jpg" %}');
+            font-family: Arial, sans-serif; /* Fuente del texto */
+            color: #444; /* Color del texto */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #e9ecef; /* Color del contenedor */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Sombra */
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 {
+            color: #555; /* Color del título */
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .btn {
+            background-color: #6c757d; /* Color del botón */
+            color: #fff; /* Color del texto del botón */
+            border-color: #6c757d; /* Color del borde del botón */
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #495057; /* Color del botón al pasar el ratón */
+            border-color: #495057; /* Color del borde del botón al pasar el ratón */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Acceso Restringido</h1>
+        <h4>¿Y tu? ¿Que haces acá?</h4>
+        <p>No tienes los privilegios necesarios para acceder a esta página.</p>
+        <a href="{% url 'index' %}" class="btn btn-secondary btn-lg btn-block">Ir a la página principal</a>
+    </div>
+    
+</body>
+</html>

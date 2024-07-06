@@ -18,4 +18,5 @@ urlpatterns = [
     path('generosJuegos_edit/<str:pk>', views.generosJuegos_edit, name = 'generosJuegos_edit'),
 
     path('registro', views.registro, name='registro'),
+    path('notallowed', views.notallowed, name='notallowed'),
 ]
