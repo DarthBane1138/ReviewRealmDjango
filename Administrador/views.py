@@ -63,6 +63,12 @@ def juegosAdd(request):
         return render(request, 'Administrador/juegos_add.html', context)
     
     else:
+        titulo = request.POST["titulo"]
+        # Validación de que no existe el juego (Por título)
+        if Juego.objects.filter(titulo=titulo).exists():
+            generos_juegos = Genero_Juego.objects.all()
+            context = {'genero_juegos':generos_juegos, 'mensaje': "Ya existe un juego con este título"}
+            return render(request, 'Administrador/juegos_Add.html', context)
         # Es un POST, por lo tanto se recuperan los datos del formulario
         # y se graban en la tabla.
 

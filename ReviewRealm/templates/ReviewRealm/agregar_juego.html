@@ -10,7 +10,7 @@
 
     <div style=" text-align: center;">
         <h3 class="subtitulo_index_2 text-center" id="titulo_juego" style="margin-top: 50px; margin-bottom: 50px;">Ingresa los datos del juego que deseas agregar</h3>
-        <form action="juegosAdd" method="POST" enctype="multipart/form-data">
+        <form action="agregar_juego" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
                 <pre class="letraAgregarJuego">Título:            <input class="casillaAgregarJuego" type="text" name="titulo"></pre>
                 <pre class="letraAgregarJuego">Descripcion:       <textarea class="casillaAgregarJuego" name="descripcion" rows="4" cols="50"></textarea></pre>
@@ -30,7 +30,7 @@
 
             <input type="submit" name="opcion" value="Agregar">
         </form><br><br>
-        <a href="{% url 'crud' %}">Volver</a>
+        <a href="{% url 'index' %}">Volver</a>
         <br>
         <div id="idMensajes">
             {% if mensaje %}

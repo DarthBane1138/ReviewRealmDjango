@@ -67,10 +67,12 @@ def agregar_juego(request):
         return render(request, 'ReviewRealm/agregar_juego.html', context)
     
     else:
+        titulo = request.POST["titulo"]
         # Validación de que no existe el juego (Por título)
-        if Juego.objects.filter(titulo=titulo).exist():
+        if Juego.objects.filter(titulo=titulo).exists():
             generos_juegos = Genero_Juego.objects.all()
             context = {'genero_juegos':generos_juegos, 'mensaje': "Ya existe un juego con este título"}
+            return render(request, 'ReviewRealm/agregar_juego.html', context)
 
         titulo          = request.POST["titulo"]
         descripcion     = request.POST["descripcion"]
