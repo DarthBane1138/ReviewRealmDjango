@@ -25,8 +25,8 @@ def ingresar_juego(request):
     query = request.GET.get('q')
     results = []
     if query:
-        results = Juego.objects.filter(titulo__icontains = query)
-    context={'results': results, 'query':query}
+        results = Juego.objects.filter(titulo__icontains=query)
+    context = {'results': results, 'query': query}
     return render(request, 'ReviewRealm/ingresar_juego.html', context)
 
 def inicio_sesion(request):

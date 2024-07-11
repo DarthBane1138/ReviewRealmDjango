@@ -27,15 +27,38 @@
             </form>
             <br>
           </div>
+
+            <h2 class="subtitulo_index text-center">Resultados de la búsqueda</h2>
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-8" id="resultadoBusqueda">
+                {% if results %}
+                  <ul>
+                    {% for juego in results %}
+                      <li class="datoJuego"><a href="{% url 'juego' pk=juego.id_juego %}">{{juego.titulo}}</a></li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  {% if request.GET.q %}
+                  <h4 id="noMatch">No se encontraron juegos con esa búsqueda. Ingresalo para aportar con nuestra comunidad</h4>
+                  <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                      Swal.fire({
+                          icon: "error",
+                          title: "Oops...",
+                          text: "No se encontraron juegos con esa búsqueda. Ingresalo para aportar con nuestra comunidad",
+                      });
+                    });
+                  </script>
+                  {% else %}
+                  <h4 id="noMatch">Aún no se ha ingresado una búsqueda</h4>
+                  {% endif %}
+                {% endif %}
+              </div>
+              <div class="col-2"></div>
+            </div>
+            
           
-          <h2 class="subtitulo_index text-center">Resultados de la búsqueda</h2>
-          <ul>
-            {% for juego in results %}
-            <li class="datoJuego"><a href="{% url 'juego' pk=juego.id_juego %}">{{juego.titulo}}</a></li>
-            {% empty %}
-            <li>No se encontraron resultados</li>
-            {% endfor %}
-          </ul>
 
           <h5 class="subtitulo_index_3 text-center">Si el juego que buscas no está disponible, puedes ingresarlo a continuación</h3>
             <br>
@@ -44,23 +67,6 @@
         <div class="col-2"></div>
 
     </div>
+  </div>
 
 {% endblock %}
-
-    <script>
-      function agregar() {
-        Swal.fire({
-          title: '¿Estás seguro?',
-          text: '¿Quieres agregar este juego?',
-          icon: 'question',
-          showCancelButton: true,
-          confirmButtonText: 'Sí, agregarlo',
-          cancelButtonText: 'Cancelar'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire('¡Agregado!', 'El juego ha sido agregado correctamente.', 'success');
-            // Aqui posteriormente se puede agregar la informacion a la base de datos
-          }
-        });
-      }
-    </script>
