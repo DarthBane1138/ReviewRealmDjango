@@ -14,9 +14,9 @@
       <div class = "col-2"></div>
       <div class = "col-8" id = "columna_principal">
         <br>
-        <table class="table table-transparent">
+        <table class="table table-striped">
           {% if generos_juegos %}
-            <thead>
+            <thead class="thead-dark">
               <tr>
                 <th scope="col">Id Género</th>
                 <th scope="col">Género</th>
@@ -28,7 +28,7 @@
                 {% if x.cantidad_juegos > 0 %}
                   <tr>
                     <th scope="row">{{x.id_genero_juego}}</th>
-                    <td><a href="{% url 'juegos_por_genero' pk=x.id_genero_juego %}">{{x.nombre_genero}}</a></td>
+                    <td id="linkJuego"><a href="{% url 'juegos_por_genero' pk=x.id_genero_juego %}">{{x.nombre_genero}}</a></td>
                     <td>{{x.cantidad_juegos}}</td>
                   </tr>
                 {% endif %}

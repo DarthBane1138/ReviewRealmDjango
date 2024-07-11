@@ -294,3 +294,7 @@ body {
   padding: 20px;
   border-radius: 5px;
 }
+
+#linkJuego {
+  font-weight: bold;
+}

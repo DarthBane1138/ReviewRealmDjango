@@ -27,7 +27,7 @@
                         {% for juego in juegos %}
                             <tr class="fila_juego_por_genero">
                                 <td>{{juego.id_juego}}</td>
-                                <td><a href="{% url 'juego' pk=juego.id_juego %}">{{juego.titulo}}</a></td>
+                                <td id="linkJuego"><a href="{% url 'juego' pk=juego.id_juego %}">{{juego.titulo}}</a></td>
                                 <td>{{juego.anio}}</td>
                                 <td>{{juego.desarrollador}}</td>
                             </tr>   
