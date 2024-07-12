@@ -5,41 +5,39 @@ body {
   padding-bottom:0 ;
 }
 
-/* Cambiar el color de fondo de la navbar */
+/* CONFIGURACIONES NAVBAR */
+/* Color de fondo de la navbar */
 .bg-body-tertiary {
   background-color: rgb(65, 65, 65) !important; /* Gris oscuro para el fondo */
 }
 
-/* CONFIGURACIONES NAVBAR */
-
-/* Para el color de las letras de los elementos de la navbar */
+/* Color de las letras de los elementos de la navbar */
 .navbar-nav .nav-link {
-  color: rgb(255, 255, 255); /* Blanco para las letras */
+  color: rgb(255, 255, 255);
 }
 
-/* Para cambiar el color de las letras de los elementos del navbar */
+/* Color de las letras de los elementos del navbar */
 .navbar-nav .nav-link.active {
-  color: rgb(76, 169, 201); /* Azul claro para el elemento activo */
+  color: rgb(76, 169, 201);
   font-weight: bold;
 }
 
 .navbar-nav .nav-link.disabled {
-  color: rgb(100, 100, 100); /* gris para los elementos incativos */
+  color: rgb(100, 100, 100);
 }
 
+/* Estilo para contenedor de título de cada página*/
 .contenedor-titulo {
   background-color: rgb(100, 100, 100);
   padding: 1px;
 }
 
+/* Estilo para logo de ReviewRealm*/
 .navbar-brand img {
   width: 250px; /* Ancho de la imagen */
 }
 
-.mi-columna-oscurecida {
-  background-color: rgba(0, 0, 0, 0.8); /* Aumenta la opacidad para oscurecer */
-}
-
+/* Estilo para caja central de presentación de la página (index) */
 .content_box_wide:not(.recomendaciones) {
   background-color: rgba(0, 0, 0, 0.356);
   position: absolute;
@@ -58,11 +56,20 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/* Estilo para logo dentro de caja principal de presentación de la página (index) */
 .responsive_image {
-  max-width: 100%; /* Hace que la imagen sea tan ancha como su contenedor */
-  height: auto; /* Mantiene la proporción de la imagen */
+  max-width: 100%;
+  height: auto;
 }
 
+/* Para dejar carrousel de index con botones transparentes */
+#carrouselPrev,
+#carrouselNext {
+  background-color: transparent;
+  border: none;
+}
+
+/* Estilos para letras de títulos menores*/
 .subtitulo_index {
   color: rgb(3, 158, 3);
   text-shadow: -1px -1px 1px rgb(0, 0, 0), 1px -1px 1px rgb(0, 0, 0), -1px 1px 1px rgb(0, 0, 0), 1px 1px 10px rgb(0, 0, 0);
@@ -81,6 +88,7 @@ body {
   font-weight: bolder;
 }
 
+/* Lista dentro de caja central en index*/
 .lista_pagina {
   text-align: left;
   color:  rgb(219, 219, 219);
@@ -88,47 +96,7 @@ body {
   line-height: 2;
 }
 
-.table-transparent {
-  background-color: rgba(255, 255, 255, 0); /* Fondo completamente transparente */
-}
-
-.table-transparent th,
-.table-transparent td {
-  background-color: rgba(255, 255, 255, 0); /* Fondo completamente transparente */
-  color: white;
-}
-
-.content_box_wide.recomendaciones {
-  background-color: rgba(0, 0, 0, 0.356);
-  position: absolute;
-  top: 50%; /* Ajusta la posición vertical según necesites */
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2; /* Asegura que la caja de texto esté sobre las imágenes */
-  color: #000000; /* El color del texto */
-  text-align: center; /* Centra el texto dentro de la caja */
-  /* Agrega aquí más estilos si es necesario */
-  width: 50%; /* Porcentaje del ancho de la pantalla */
-  height: 1000px;
-  max-width: 1000px; /* Ancho máximo para dispositivos grandes */
-  max-height: 500px; /* Altura máxima para dispositivos grandes */
-  box-sizing: border-box; /* Asegura que padding y border estén incluidos en el ancho/altura */
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.caja-flexible {
-  height: 150px; /* Altura fija */
-  width: auto; /* Anchura adaptable */
-  max-width: 100%; /* Asegura que la caja no exceda el ancho del contenedor */
-  overflow: auto; /* Añade barras de desplazamiento si el contenido excede la altura */
-}
-
-.caja-fija {
-  height: 1080px; /* Altura fija */
-  width: 1920px; /* Anchura inicial fija */
-
-}
-
+/* Estilos para inicio/registro (no django) en desuso */
 .form-label {
   color:  rgb(219, 219, 219);
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
@@ -206,12 +174,6 @@ body {
   min-height: 600px;
 }
 
-#carrouselPrev,
-#carrouselNext {
-  background-color: transparent;
-  border: none;
-}
-
 /* Estilo para todos los elementos con el id="datoJuego" */
 .datoJuego {
     color: white;
@@ -235,6 +197,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Difumina los bordes */
 }
 
+/* Estilos para descripciones varias */
 .table-striped tbody tr:nth-child(even) {
   background-color: rgba(206, 206, 206, 0.863);
 }
@@ -243,6 +206,7 @@ body {
   background-color: rgba(255, 255, 255, 0.548);
 }
 
+/* Botón para agregar juego */
 #botonAgregarJuego {
   /* Tus estilos actuales */
   background-color: #0056b3;
@@ -262,12 +226,14 @@ body {
   width: 250px; /* Ajusta el ancho del botón si es necesario */
 }
 
+/* Botón para agregar juego */
 #botonAgregarJuego:hover {
   background-color: #00408c;
   border-color: #002f5e;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
 
+/* Estilos página para agregar juego */
 .letraAgregarJuego {
   color: white;
   text-shadow: 1px 1px 2px rgb(0, 0, 0); /* Leve sombreado */

@@ -9,10 +9,12 @@ from django.contrib.auth import login, authenticate
 
 # Create your views here.
 
+# Vista index
 def index(request):
     context={}
     return render(request, 'ReviewRealm/index.html', context)
 
+# Vista Categorías
 def categorias(request):
     generos_juegos = Genero_Juego.objects.all()
     context={'generos_juegos':generos_juegos}
@@ -21,13 +23,23 @@ def categorias(request):
         x.cantidad_juegos = Juego.objects.filter(id_genero_juego=x).count()
     return render(request, 'ReviewRealm/categorias.html', context)
 
-def ingresar_juego(request):
+# Vista para buscar juegos por id
+def buscar_juego(request):
     query = request.GET.get('q')
     results = []
     if query:
+        # Búsqueda por título
         results = Juego.objects.filter(titulo__icontains=query)
-    context = {'results': results, 'query': query}
-    return render(request, 'ReviewRealm/ingresar_juego.html', context)
+        # Búsqueda por año (conversión de query a entero)
+        try:
+            query_int = int(query)
+            results = Juego.objects.filter(anio=query_int)
+        except ValueError:
+            pass
+    context = {"results": results, "query": query}
+    return render(request, 'ReviewRealm/buscar_juego.html', context)
+    
+
 
 def inicio_sesion(request):
     context={}

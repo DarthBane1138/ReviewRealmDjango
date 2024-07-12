@@ -7,7 +7,9 @@ from .decorators import staff_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 
-# Create your views here.
+# Se define staff_required para restringir el ingreso a ciertas vistas a usuarios que no pertenezcan al staff
+
+# Vista para index
 @login_required
 @staff_required
 def menu(request):
@@ -16,6 +18,7 @@ def menu(request):
     context = {'juegos':juegos, 'generos_juegos':generos_juegos}
     return render(request, 'Administrador/index.html', context)
 
+# Vista para página de registro
 def registro(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -45,6 +48,7 @@ def registro(request):
     
     return render(request, "registration/registro.html")
 
+# Vista para página de crud donde se listan los juegos (Administrador/index)
 @login_required
 @staff_required
 def crud(request):
@@ -52,6 +56,7 @@ def crud(request):
     context = {'juegos': juegos}
     return render(request, 'Administrador/juegos_list.html', context)
 
+# Vista para agregar juegos desde Administrador
 @login_required
 @staff_required
 def juegosAdd(request):
@@ -106,6 +111,7 @@ def juegosAdd(request):
         context = {'generos_juegos': generos_juegos, 'mensaje': "Ok, datos grabados..."} 
         return render(request, 'Administrador/juegos_add.html', context)
 
+# Vista para eliminar juegos
 @login_required
 @staff_required
 def juegos_del(request,pk):
@@ -124,6 +130,7 @@ def juegos_del(request,pk):
         context = {'juegos':juegos, 'mensaje':mensaje}
         return render(request, 'Administrador/juegos_list.html', context)
 
+# Vista para encontrar juegos y editarlos en "juegos_edit"
 @login_required
 @staff_required
 def juegos_findEdit(request, pk):
@@ -141,6 +148,7 @@ def juegos_findEdit(request, pk):
             context={'mensaje':"Error, id no existe..."}
             return render(request, 'Administrador/juegos_list.html', context)
 
+# Vista que permite editar juegos
 @login_required
 @staff_required        
 def juegosUpdate(request):
@@ -169,18 +177,18 @@ def juegosUpdate(request):
             juego = Juego()
 
         juego = Juego()
-        juego.id_juego = id_juego
-        juego.titulo = titulo
-        juego.descripcion = descripcion
-        juego.anio = anio
-        juego.id_genero_juego = objGenero_Juego
-        juego.desarrollador = desarrollador
-        juego.publisher = publisher
-        juego.plataforma = plataforma
-        juego.duracion = duracion
-        juego.calificacion = calificacion
-        juego.clasificacion = clasificacion
-        juego.imagen_portada = imagen_portada
+        juego.id_juego          = id_juego
+        juego.titulo            = titulo
+        juego.descripcion       = descripcion
+        juego.anio              = anio
+        juego.id_genero_juego   = objGenero_Juego
+        juego.desarrollador     = desarrollador
+        juego.publisher         = publisher
+        juego.plataforma        = plataforma
+        juego.duracion          = duracion
+        juego.calificacion      = calificacion
+        juego.clasificacion     = clasificacion
+        juego.imagen_portada    = imagen_portada
         if imagen_portada:
             juego.imagen_portada = imagen_portada
         elif id_juego and not imagen_portada:
@@ -189,17 +197,6 @@ def juegosUpdate(request):
 
         juego.save()
 
-        #nueva_imagen = input("Ingrese la nueva imagen: ")
-
-        #    if nueva_imagen:
-        #        # Si se carga una imagen, asigna su valor a nueva_portada
-        #        nueva_portada = nueva_imagen
-        #    else:
-        #        # Si no se carga nada, no se guarda ningún valor en nueva_portada
-        #        nueva_portada = None
-
-# Luego puedes usar nueva_portada en tu formulario
-        
         generos_juegos = Genero_Juego.objects.all()
         context={'mensaje':"Ok, datos actualizados...", 'generos_juegos':generos_juegos, 'juego':juego}
         return render(request, 'Administrador/juegos_edit.html', context)
@@ -209,8 +206,9 @@ def juegosUpdate(request):
         context={'juegos': juegos}
         return render(request, 'Administrador/juegos_list.html', context)
     
-###################################### Géneros Juegos ######################################
+###################################### vistas para Géneros Juegos ######################################
 
+# Vista para listar los géneros de los videojuegos
 @login_required
 @staff_required
 def crud_generos_juegos(request):
@@ -219,6 +217,7 @@ def crud_generos_juegos(request):
     print("Enviando datos generos_list")
     return render(request, "Administrador/generos_juegos_list.html", context)
 
+# Vista para agregar Genero_Juego, se usa forms de Django
 @login_required
 @staff_required
 def generosJuegosAdd(request):
@@ -242,6 +241,7 @@ def generosJuegosAdd(request):
         context = {'form':form}
         return render(request, 'Administrador/generos_juegos_add.html', context)
 
+# Vista para eliminar Genero_Juego
 @login_required
 @staff_required
 def generosJuegos_del(request, pk):
@@ -263,6 +263,7 @@ def generosJuegos_del(request, pk):
         context={'mensaje':mensaje, 'generos_juegos':generos_juegos}
         return render(request, 'Administrador/generos_juegos_list.html', context)
 
+# Vista para eliminar Genero_Juego
 @login_required
 @staff_required
 def generosJuegos_edit(request, pk):
@@ -293,7 +294,8 @@ def generosJuegos_edit(request, pk):
         mensaje="Error, id no existe"
         context={'mensaje':mensaje, 'generos_juegos':generos_juegos}
         return render(request, 'Administrador/generos_juegos_list.html', context)
-    
+
+# Vista para redirigir a usuario en caso de que manualmente ingrese URL que no le es permitido
 def notallowed(request):
     context={}
     return render(request, 'Administrador/notallowed.html', context)

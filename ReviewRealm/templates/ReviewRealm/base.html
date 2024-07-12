@@ -34,7 +34,7 @@
                         <a class="nav-link" href="{% url 'index' %}">Inicio</a>
                         <a class="nav-link" href="{% url 'categorias' %}">Categorías</a>
                         <a class="nav-link" href="{% url 'recomendacion_aleatoria' %}">Recomendación aleatoria</a>
-                        <a class="nav-link" href="{% url 'ingresar_juego' %}">Buscar Juegos</a>
+                        <a class="nav-link" href="{% url 'buscar_juego' %}">Buscar Juegos</a>
                         <!-- Sólo podrá ingresar al mantenedor si el usuario es parte del staff -->
                         {% if user.is_authenticated and user.is_staff%}
                             <a class="nav-link" href="{% url 'menu' %}">Mantenedor</a>
@@ -103,7 +103,7 @@
                 <p id="p-footer">Este proyecto lo puedes encontrar en nuestro Github</p>
                 <div class="social-media-icons">
                     <!-- Iconos de redes sociales (reemplazar # con las URLs reales) -->
-                    <a href="https://github.com/DarthBane1138/Review-Realm.git"><img src="{% static 'ReviewRealm/img/Github.png' %}"
+                    <a href="https://github.com/DarthBane1138/ReviewRealmDjango.git"><img src="{% static 'ReviewRealm/img/Github.png' %}"
                             alt="Github">Github/ReviewRealm</a>
                     <h5>Desarrolladores</h5>
                     <a href="https://github.com/DarthBane1138">DarthBane1138</a> / <a

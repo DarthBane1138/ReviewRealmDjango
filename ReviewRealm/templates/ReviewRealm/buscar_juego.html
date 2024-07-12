@@ -1,6 +1,6 @@
 {% extends 'ReviewRealm/base.html' %}
 {% load static %}
-{% block title %}Ingresar Juego{% endblock %}
+{% block title %}Buscar Juego{% endblock %}
 
 {% block content %}
     <div class="contenedor-titulo">
@@ -16,10 +16,10 @@
           <br><br>
           <h2 class="subtitulo_index text-center">Busca algún juego para obtener sus datos:</h2>
           <br>
-          <h5 class="subtitulo_index_3 text-center">Busca los juegos por palabras claves</h3>
+          <h5 class="subtitulo_index_3 text-center">Busca los juegos por palabras claves, o bien por año de lanzamiento</h3>
           <br>
           <div class="mb-3">
-            <form method="GET" action="{% url 'ingresar_juego' %}">
+            <form method="GET" action="{% url 'buscar_juego' %}">
               <input type="text" name="q" class="form-control" id="exampleFormControlInput1" placeholder="Ingrese el nombre del juego acá...">
               <div class="text-center">  
                 <button type="submit"> BUSCAR </button>
@@ -38,6 +38,16 @@
                       <li class="datoJuego"><a href="{% url 'juego' pk=juego.id_juego %}">{{juego.titulo}}</a></li>
                     {% endfor %}
                   </ul>
+                  <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                      Swal.fire({
+                        icon: "success",
+                        title: "Se encontraron {{ results|length}} resultados",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                    });
+                  </script>
                 {% else %}
                   {% if request.GET.q %}
                   <h4 id="noMatch">No se encontraron juegos con esa búsqueda. Ingresalo para aportar con nuestra comunidad</h4>
