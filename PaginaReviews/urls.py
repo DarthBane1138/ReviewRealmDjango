@@ -24,6 +24,7 @@ urlpatterns = [
     path('ReviewRealm/', include('ReviewRealm.urls')),
     path("accounts/", include("django.contrib.auth.urls")),
     path('Administrador/', include('Administrador.urls')),
+    path('', include('ReviewRealm.urls')),
 ]
 
 if settings.DEBUG:
