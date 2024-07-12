@@ -37,5 +37,9 @@ Reglas de Negocio: Se han establecido las reglas de negocio que se detallan a co
 - Se ha implementado una página para que, de forma aleatoria, se pueda mostrar un juego al azar de entre los que estan disponibles en la base de datos, anteriormente esto se
 	simulaba por medio de un documento json, ahora esta selección viene de la base de datos. No se requiere inicio de sesión para esta funcionalidad.
 - Tiene una página "Buscar Juegos", en la cual se habilita un buscador que permite buscar por coincidencias parciales en los nombres de los juegos al escribir y presionar enter.
+	¡Se ha implementado la búsqueda por año de lanzamiento!
 - En esta misma página se te permite ingresar algún juego mediante un formulario. Esta funcionalidad sí requiere inicio de sesión
+
+Se adjunta también presentación en Powerpoint
+Complementos en requirements.txt (Django y Pillow)
 
